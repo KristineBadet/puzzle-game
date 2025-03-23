@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Challenge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #0ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #0ff;
+            box-shadow: 0px 0px 20px #0ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0px 0px 10px #0ff; }
+            to { box-shadow: 0px 0px 30px #0ff; }
+        }
+        button {
+            background-color: #ff0077;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 10px #ff0077;
+        }
+        button:hover {
+            background-color: #ff3399;
+            box-shadow: 0 0 20px #ff3399;
+        }
+        h1 {
+            color: #ffdd44;
+            text-shadow: 0 0 10px #ffdd44;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>The Three-Digit Number Trick</h1>
+            <p>Think of a three-digit number where all three digits are the same.</p>
+            <p>Divide that number by the sum of its digits.</p>
+            <p>What is the result?</p>
+            <button id="backButton" onclick="goBack()">Return</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+                alert("Access Denied!");
+            }
+        });
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+        
+        function disableBackButton() {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+
+        function goBack() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>

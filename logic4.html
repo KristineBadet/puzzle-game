@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Challenge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #0ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #0ff;
+            box-shadow: 0px 0px 20px #0ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0px 0px 10px #0ff; }
+            to { box-shadow: 0px 0px 30px #0ff; }
+        }
+        button {
+            background-color: #ff0077;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 10px #ff0077;
+        }
+        button:hover {
+            background-color: #ff3399;
+            box-shadow: 0 0 20px #ff3399;
+        }
+        h1 {
+            color: #ffdd44;
+            text-shadow: 0 0 10px #ffdd44;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 20px #0ff;
+            border: 2px solid #0ff;
+        }
+
+        th, td {
+            border: 1px solid #0ff;
+            padding: 12px;
+            text-align: center;
+            font-size: 18px;
+            color: #0ff;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-shadow: 0 0 10px #ffdd44;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: rgba(10, 10, 10, 0.8);
+        }
+
+        tr:nth-child(even) td {
+            background-color: rgba(20, 20, 20, 0.8);
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 0, 119, 0.3);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>The Book Borrowing Mystery</h1>
+            <p>Three friends—Alex, Brian, and Charlie—each borrowed a different book (one was Mystery, one was Fantasy, and one was Science Fiction) from the library on different days of the week (Monday, Wednesday, and Friday).</p>
+            <p>Using the clues below, can you determine who borrowed which book and on what day?</p>
+            <b><p>Clues:</p></b>
+            <p>1. Alex did not borrow the book on Monday.</p>
+            <p>2. The person who borrowed the Fantasy book did so on Friday.</p>
+            <p>3. Charlie borrowed the book on Wednesday.</p>
+            <p>4. Brian did not borrow the Science Fiction book.</p>
+            <center>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Mystery</th>
+                    <th>Fantasy</th>
+                    <th>Sci-Fi</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                </tr>
+                <tr>
+                    <td>Alex</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Brian</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Charlie</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <br>
+        </center>
+            <button id="backButton" onclick="goBack()">Return</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+                alert("Access Denied!");
+            }
+        });
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+        
+        function disableBackButton() {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+        function goBack() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>

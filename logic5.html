@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Challenge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #0ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #0ff;
+            box-shadow: 0px 0px 20px #0ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0px 0px 10px #0ff; }
+            to { box-shadow: 0px 0px 30px #0ff; }
+        }
+        button {
+            background-color: #ff0077;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 10px #ff0077;
+        }
+        button:hover {
+            background-color: #ff3399;
+            box-shadow: 0 0 20px #ff3399;
+        }
+        h1 {
+            color: #ffdd44;
+            text-shadow: 0 0 10px #ffdd44;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 20px #0ff;
+            border: 2px solid #0ff;
+        }
+
+        th, td {
+            border: 1px solid #0ff;
+            padding: 12px;
+            text-align: center;
+            font-size: 18px;
+            color: #0ff;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-shadow: 0 0 10px #ffdd44;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: rgba(10, 10, 10, 0.8);
+        }
+
+        tr:nth-child(even) td {
+            background-color: rgba(20, 20, 20, 0.8);
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 0, 119, 0.3);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Magic Square Puzzle</h1>
+            <p>Fill in the missing numbers so that each row, column, and diagonal adds/sum up to 65.</p>
+            
+            <center>
+            <table>
+                <tr>
+                    <td>17</td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>5</td>
+                    <td></td>
+                    <td>14</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td>13</td>
+                    <td></td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>12</td>
+                    <td></td>
+                    <td>21</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>18</td>
+                    <td></td>
+                    <td>2</td>
+                    <td>9</td>
+                </tr>
+            </table>
+            <br>
+        </center>
+            <button id="backButton" onclick="goBack()">Return</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+                alert("Access Denied!");
+            }
+        });
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+        
+        function disableBackButton() {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+        function goBack() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>

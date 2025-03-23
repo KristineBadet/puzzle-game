@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4th Code</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #00ffcc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #00ffcc;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #00ffcc; }
+            to { box-shadow: 0 0 20px #00ffcc; }
+        }
+        h2 {
+            color: #ffcc00;
+            text-shadow: 0 0 10px #ffcc00;
+        }
+        input {
+            padding: 15px;
+            font-size: 18px;
+            width: 400px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            text-align: center;
+            background-color: #222;
+            color: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            background-color: #ff0066;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff0066;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ff3399;
+            box-shadow: 0 0 20px #ff3399;
+        }
+        .glitch {
+            font-size: 20px;
+            color: #ff0066;
+            text-shadow: 2px 2px 4px rgba(255, 0, 102, 0.7);
+        }
+        .return-button {
+            background-color: #0099ff;
+            box-shadow: 0 0 15px #0099ff;
+        }
+        .return-button:hover {
+            background-color: #00ccff;
+            box-shadow: 0 0 20px #00ccff;
+        }
+    </style>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+                alert("Access Denied!");
+            }
+        });
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+        
+        function disableBackButton() {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+
+        const correctCode = "PqRsTuVwXyZaBcDeFgHiJkLmNo";
+
+        function checkCode() {
+            const enteredCode = document.getElementById("codeInput").value;
+            if (enteredCode === correctCode) {
+                document.querySelector('.glitch').textContent = "Access Granted! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = "logic4.html";
+                }, 2000);
+            } else {
+                document.querySelector('.glitch').textContent = "Incorrect Code! Try Again.";
+            }
+        }
+
+        function returnToHome() {
+            window.location.href = "home.html";
+        }
+    </script>
+</head>
+<body onload="disableBackButton()">
+    <div class="container">
+        <h2>🔒 Enter the Secret Code 🔓</h2>
+        <input type="text" id="codeInput" placeholder="Enter code here...">
+        <br>
+        <button onclick="checkCode()">🔑 Unlock</button>
+        <button class="return-button" onclick="returnToHome()">🏠 Return</button>
+        <p class="glitch"></p>
+    </div>
+</body>
+</html>

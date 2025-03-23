@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #0d1b2a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .box {
+            background: rgba(20, 40, 80, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            width: 60%;
+            box-shadow: 0 0 15px #1b6ca8;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 15px #1b6ca8; }
+            to { box-shadow: 0 0 30px #3b82f6; }
+        }
+        h2 {
+            color: #ffcc29;
+            text-shadow: 2px 2px 10px rgba(255, 204, 41, 0.8);
+            font-size: 28px;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .game-button, .return-button {
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        }
+        .game-button:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #ff4b2b;
+        }
+
+        /* 🎨 MATCHING RETURN BUTTON STYLE */
+        .return-button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            margin-top: 30px;
+            display: block;
+            width: 250px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 65, 108, 0.8);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite alternate, floating 3s infinite ease-in-out;
+        }
+        
+        /* Hover Effect */
+        .return-button:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(255, 75, 43, 1);
+        }
+
+        /* Click Effect */
+        .return-button:active {
+            transform: scale(0.9);
+            box-shadow: 0 0 10px rgba(255, 75, 43, 0.5);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 75, 43, 0.8); }
+            50% { box-shadow: 0 0 25px rgba(255, 75, 43, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 75, 43, 0.8); }
+        }
+
+        /* Floating Effect */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <div class="box">
+            <h2>Puzzle Challenge</h2>
+            <p class="glitch">Select a number to unlock the next challenge!</p>
+            <div class="button-container">
+                <button class="game-button" onclick="redirectToCodePage('1.html')">1</button>
+                <button class="game-button" onclick="redirectToCodePage('2.html')">2</button>
+                <button class="game-button" onclick="redirectToCodePage('3.html')">3</button>
+                <button class="game-button" onclick="redirectToCodePage('4.html')">4</button>
+                <button class="game-button" onclick="redirectToCodePage('5.html')">5</button>
+                <button class="game-button" onclick="redirectToCodePage('6.html')">6</button>
+            </div>
+            <center>
+                <button class="return-button" onclick="returnToHome()">🏠 Home</button>
+            </center>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+                alert("Access Denied!");
+            }
+        });
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+        
+        function disableBackButton() {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+        function redirectToCodePage(page) {
+            window.location.href = page;
+        }
+
+        function returnToHome() {
+            const button = document.querySelector(".return-button");
+            button.innerText = "🚀Returning...";
+            button.style.boxShadow = "0 0 50px rgba(255, 75, 43, 1)";
+            setTimeout(() => {
+                window.location.href = "mind_games.html";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

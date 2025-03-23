@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Games</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #0ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #0ff;
+            box-shadow: 0px 0px 20px #0ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0px 0px 10px #0ff; }
+            to { box-shadow: 0px 0px 30px #0ff; }
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        button {
+            background-color: #ff0077;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 10px #ff0077;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ff3399;
+            box-shadow: 0 0 20px #ff3399;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content active" id="page1">
+            <h1>Mind Games</h1>
+            <p>The objective of this game is to challenge students’ logical thinking, problem-solving skills, and teamwork.</p>
+            <button onclick="nextPage(2)">Next</button>
+        </div>
+        <div class="content" id="page2">
+            <h1>Participants</h1>
+            <p>The game is open exclusively to students from the College of Computing and Technology Engineering (CCTE).</p>
+            <button onclick="nextPage(3)">Next</button>
+        </div>
+        <div class="content" id="page3">
+            <h1>Game Flow</h1>
+            <p><strong>Finding the Code:</strong></p><br>
+            <p>The committee will provide each team with a clue that serves as a direction to find the correct code.</p>
+            <p>Teams will search for the code based on the given clue.</p>
+            <p>Teams are not allowed to remove the code from its specific location. Instead, they must take a picture of the code.</p>
+            <p>Teams must approach the committee to verify the code.</p>
+            <button onclick="nextPage(4)">Next</button>
+        </div>
+        <div class="content" id="page4">
+            <h1>Game Flow</h1>
+            <p><strong>Verification of the Code:</strong></p><br>
+            <p>If the code is correct, the team will be directed to their respective computer.</p>
+            <p>Teams will enter the code on the computer, which will reveal a logic question.</p>
+            <button onclick="nextPage(5)">Next</button>
+        </div>
+        <div class="content" id="page5">
+            <h1>Game Flow</h1>
+            <p><strong>Solving the Logic Question:</strong></p><br>
+            <p>Teams must solve the logic question displayed on the computer.</p>
+            <p>After solving the logic question, the team must approach the committee to verify their answer.</p>
+            <button onclick="nextPage(6)">Next</button>
+        </div>
+        <div class="content" id="page6">
+            <h1>Game Flow</h1>
+            <p><strong>Next Round:</strong></p><br>
+            <p>If the logic question is answered correctly, the team will receive another clue from the committee to find the next code.</p>
+            <p>The process repeats until the game concludes.</p>
+            <button onclick="nextPage(7)">Next</button>
+        </div>
+        <div class="content" id="page7">
+            <h1>Rules and Regulations</h1>
+            <p><strong>Code Conduct:</strong> </p>
+            <p>Teams are strictly prohibited from removing the code from its designated location.</p>
+            <p>Teams found removing the code will be disqualified from the game.</p>
+            <p>If a team shares their clue with another team, it will result in disqualification and a 20-second penalty added to their recorded time.</p>
+            <button onclick="nextPage(8)">Next</button>
+        </div>
+        <div class="content" id="page8">
+            <h1>Rules and Regulations</h1>
+            <p><strong>Verification:</strong> </p>
+            <p>Codes must be verified with the committee before proceeding to the computer.</p>
+            <p>Teams must complete the current logic question before receiving the next clue.</p>
+            <button onclick="nextPage(9)">Next</button>
+        </div>
+        <div class="content" id="page9">
+            <h1>Rules and Regulations</h1>
+            <p><strong>Fair Play:</strong> </p>
+            <p>Teams must not interfere with other teams' progress or the placement of codes.</p>
+            <p>Collaboration between teams or sharing of answers is prohibited.</p>
+            <button onclick="nextPage(10)">Next</button>
+        </div>
+        <div class="content" id="page10">
+            <h1>Rules and Regulations</h1>
+            <p><strong>Device Usage:</strong> </p>
+            <p>The use of mobile devices or unauthorized tools for solving clues or questions is not allowed, except for taking pictures of the codes.</p>
+            <button onclick="nextPage(11)">Next</button>
+        </div>
+        <div class="content" id="page11">
+            <h1>Rules and Regulations</h1>
+            <p><strong>Respect and Sportsmanship:</strong> </p>
+            <p>Teams must be respectful to the committee, other participants, and the school property at all times.</p>
+            <button onclick="nextPage(12)">Next</button>
+        </div>
+        <div class="content" id="page11">
+            <h1>Violations and Penalties</h1>
+            <p><strong>Removing a Code:</strong> </p>
+            <p>Teams found removing a code from its specific location will be disqualified.</p>
+            <button onclick="nextPage(12)">Next</button>
+        </div>
+        <div class="content" id="page12">
+            <h1>Violations and Penalties</h1>
+            <p><strong>Sharing Clues or Answers:</strong> </p>
+            <p>Teams sharing clues or answers with other teams will be disqualified and incur a 20-second penalty to their recorded time.</p>
+            <button onclick="nextPage(13)">Next</button>
+        </div>
+        <div class="content" id="page12">
+            <h1>Violations and Penalties</h1>
+            <p><strong>Tampering:</strong> </p>
+            <p>Tampering with other teams’ progress or clues will result in immediate disqualification.</p>
+            <button onclick="nextPage(13)">Next</button>
+        </div>
+        <div class="content" id="page13">
+            <h1>Winning the Game</h1>
+            <p>The team that completes all challenges in the shortest time wins. In case of a tie, a final logic question will decide the winner.</p>
+            <button onclick="start()">Start</button>
+        </div>
+    </div>
+    <script>
+        function nextPage(page) {
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('page' + page).classList.add('active');
+        }
+
+        function start(){
+            window.location.href = "home.html"
+        }
+    </script>
+</body>
+</html>
